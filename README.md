@@ -69,3 +69,58 @@ python scripts/report.py --match "TeamA vs TeamB"
 ---
 
 如果你希望我根据某个子项目补充更详细的使用示例或把 README 翻译为英文，我可以继续完善。
+
+---
+
+## English (summary)
+
+worldcup-analysis — a World Cup match analysis workspace that integrates three independent analysis toolsets (MonteCarlo, ScoutTactical, StatsMarkets) into structured match reports. Each analyst produces an independent report and final consensus is derived through cross-debate.
+
+Contents:
+
+- `2026-world-cup-predictor`: Elo, Poisson and Monte Carlo based quantitative models and simulation scripts.
+- `ScoutFootball_for_World_Cup`: scout/tactical models, squad data and a tactical whiteboard frontend.
+- `Football-2026`: market/odds-focused quantitative engine (de-margin, Kelly, odds-movement detection).
+- `reports/`: independent analyst reports and consolidated match analyses.
+
+Please see each subproject's `README.md` for detailed instructions.
+
+## Usage example — `2026-world-cup-predictor`
+
+This example shows how to set up a Python environment and run a Monte Carlo report generation script on Windows (PowerShell) and Unix-like systems.
+
+1) Create and activate Python virtual environment
+
+PowerShell (Windows):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r 2026-world-cup-predictor/requirements.txt
+```
+
+Unix / macOS:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r 2026-world-cup-predictor/requirements.txt
+```
+
+2) Run a report (example):
+
+```bash
+cd 2026-world-cup-predictor
+python scripts/report.py --match "TeamA vs TeamB" --output ../reports/TeamA_vs_TeamB/
+```
+
+Notes:
+
+- Ensure `2026-world-cup-predictor/data/elo_cache_2026.json` and squad files under `2026-world-cup-predictor/data/` exist and are up-to-date.
+- See `2026-world-cup-predictor/config.py` to adjust model weights, seeds, and simulation parameters.
+- If you encounter rate limits or missing data, check `scripts/` for ingest utilities such as `ingest_wikipedia_squads.py` and `elo_scraper.py`.
+
+If you want, I can also:
+
+- Translate the full README into English (instead of the summary) and create a dedicated `README.en.md`.
+- Add step-by-step examples for `ScoutFootball_for_World_Cup` and `Football-2026`.
